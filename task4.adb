@@ -402,7 +402,7 @@ begin
 
     begin
         a;
-    exception
+    exception       
         when Occur_Failure => 
             Put_Line("There was an occur failure in a");
         when Clash_Failure =>

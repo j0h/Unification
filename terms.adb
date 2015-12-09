@@ -115,6 +115,7 @@ package body terms is
             raise Constraint_Error; -- not a valid substitution
         end if;
         if Term.Category = Fnct then 
+            if Term.name = Substitution.Term_One.name then
             for i in 0 .. Term.Fnct.parameters'Length - 1 loop
                 if Term.Fnct.parameters(i).Category = Var then
                     Term.Fnct.parameters(i) := new TTerm(P_Category => 
@@ -130,7 +131,9 @@ package body terms is
                             Term => Term.Fnct.parameters(i));
                 end if;
             end loop;
+            end if;
         elsif Term.Category = Var then
+            if Term.name = Substitution.Term_One.name then
             Term := new TTerm(P_Category => 
                 Substitution.Term_Two.Category);
             Term.name := 
@@ -138,6 +141,7 @@ package body terms is
             if Substitution.Term_Two.Category = Fnct then
                 Term.Fnct := 
                     Substitution.Term_Two.Fnct;
+            end if;
             end if;
         end if;
 

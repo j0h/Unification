@@ -83,6 +83,12 @@ package body unification is
                     if List_Element.Term_One.name /= 
                         List_element.Term_Two.name 
                     then
+                        Put_Line("Clash Problem detected!");
+                        Put_Line(To_String(
+                            To_String(List_Element.Term_One) &
+                            To_Unbounded_String("=?") &
+                            To_String(List_Element.Term_Two)
+                        ));
                         raise Clash_Failure;
                     end if;
 
