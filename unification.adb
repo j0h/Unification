@@ -113,7 +113,7 @@ package body unification is
                                 ));
                            end;
                         end loop;
-                    end if;
+                    
                     Put("Deleting the old function ");
                     Put_Line(To_String(
                         To_String(List_Element.Term_One) &
@@ -124,6 +124,9 @@ package body unification is
                     terms.OS.Delete(Term_Set, List_Cursor); 
                     List_Cursor := Next; 
                     found := true;
+                    else
+                        terms.OS.Next(List_Cursor);
+                    end if;
                 else 
                     terms.OS.Next(List_Cursor);
                 end if; 
