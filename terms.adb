@@ -116,21 +116,10 @@ package body terms is
         end if;
         if Term.Category = Fnct then 
             if Term.name = Substitution.Term_One.name then
-            for i in 0 .. Term.Fnct.parameters'Length - 1 loop
-                if Term.Fnct.parameters(i).Category = Var then
-                    Term.Fnct.parameters(i) := new TTerm(P_Category => 
-                        Substitution.Term_Two.Category);
-                    Term.Fnct.parameters(i).name := 
-                        Substitution.Term_Two.name;
-                    if Substitution.Term_Two.Category = Fnct then
-                        Term.Fnct.parameters(i).Fnct := 
-                            Substitution.Term_Two.Fnct;
-                    end if;
-                else
+                for i in 0 .. Term.Fnct.parameters'Length - 1 loop
                     Substitute( Substitution => Substitution,
                             Term => Term.Fnct.parameters(i));
-                end if;
-            end loop;
+                end loop;
             end if;
         elsif Term.Category = Var then
             if Term.name = Substitution.Term_One.name then
