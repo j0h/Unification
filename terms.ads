@@ -20,7 +20,6 @@ package Terms is
     type TEquation_Access is access all TEquation; 
     
     function Equal ( l, r : TEquation_Access ) return Boolean;
-    --function Equal ( l, r : TTerm_Access ) return Boolean;
 
     -- This set is the Unification Problem
     -- It contains quations t =^? s

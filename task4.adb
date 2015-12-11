@@ -1,4 +1,4 @@
-with unification, terms, Ada.Text_IO, Ada.Strings.Unbounded;
+with unification, term_parser, terms, Ada.Text_IO, Ada.Strings.Unbounded;
 use unification, Ada.Text_IO, Ada.Strings.Unbounded, terms;
 
 procedure task4 is
@@ -440,5 +440,9 @@ begin
         when Clash_Failure =>
             Put_Line("There was an clash failure in e");
     end;
+    
+    Put_Line(To_String(terms.To_String(term_parser.Parse_Equation("f(h(x1), f(x3,x4)) = f(x3, f(x2, x2))"))));
+
     -- wtf did i do? i created some monster!
 end task4;
+
